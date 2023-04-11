@@ -1,4 +1,4 @@
-package main;
+ package main;
 
 
 public class BalancedBrackets {
@@ -21,7 +21,7 @@ public class BalancedBrackets {
      * @param str - to be validated
      * @return true if balanced, false otherwise
      */
-    public static boolean hasBalancedBrackets(String str) {
+    public static boolean hasBalancedBrackets(String str) {  //keeps running count of bracket pairs
         int brackets = 0;
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
@@ -29,7 +29,12 @@ public class BalancedBrackets {
             } else if (ch == ']') {
                 brackets--;
             }
+            if (brackets < 0) { //dropping below 0 --> ][
+                return false;   //break out of the loop
+            }
         }
-        return brackets == 0;
-    }
-}
+        return brackets == 0;  //want this to be true bc it means all the opening brackets have a closing bracket
+
+    } //end hasBalancedBrackets
+
+} //end BalancedBrackets
